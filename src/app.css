@@ -4,7 +4,7 @@
 @import 'tailwindcss/utilities';
 
 body {
-    font-family: "Modern Antiqua", "Kaisei Opti", serif;
+    font-family: "Kaisei Opti", serif;
     font-style: normal;
     background: white;
 }

@@ -28,7 +28,7 @@
         text-6xl tracking-tight
         bg-gradient-to-r from-blue-500 via-indigo-500 to-fuchsia-500
         bg-clip-text text-transparent
-        pb-1 w-fit m-auto
+        pb-2 w-fit m-auto
         mt-10
         mb-10
     }

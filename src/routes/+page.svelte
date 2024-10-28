@@ -97,6 +97,7 @@
                 url: "/favicon.png",
                 alt: "ファビコン",
             }
-        ]
+        ],
+        siteName: 'GooglingGo! Japan'
     }}
 />
