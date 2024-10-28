@@ -1,2 +1,106 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+    import { page } from "$app/stores";
+    import { movepg } from '$lib/utils';
+    import Swal from "sweetalert2";
+
+    export const ggrks = () => {
+        Swal.fire({
+            title: "ググれカス",
+            icon: "info"
+        });
+    }
+    export const ggrbk = () => {
+        Swal.fire({
+            title: "ググれボケ(またはバカ)",
+            icon: "info"
+        });
+    }
+
+    let sharp = $page.url.search
+    let search = sharp.substr(sharp.indexOf('?') + 1);
+
+    let data
+
+    export const genogp = () => {
+        if (search == '') {
+            data = "自分で調べることはとても重要です。人に聞く前に一度検索してみやがれください。"
+        } else {
+            data = search
+        }
+        return data
+    }
+</script>
+
+<div class="header">
+    <h1 class="logo">GooglingGo! Japan</h1>
+</div>
+
+<div class="engine">
+    {#if search}
+        <h2>🔍 {search}</h2>
+    {/if}
+    <p>お好みの検索エンジンを選んでください</p>
+    <div class="btns">
+        <button onclick={() => movepg("https://www.google.com/search?q=" + search)}>Google</button>
+        <button onclick={() => movepg("https://www.bing.com/search?q=" + search)}>Bing</button>
+        <button onclick={() => movepg("https://duckduckgo.com/?q=" + search)}>DuckDuckGo</button>
+        <button onclick={() => movepg("https://search.yahoo.com/search?q=" + search)}>Yahoo!</button>
+        <button onclick={() => movepg("https://search.brave.com/search?q=" + search)}>Brave</button>
+        <button onclick={() => movepg("https://www.ecosia.org/search?q=" + search)}>Ecosia</button>
+    </div>
+</div>
+
+<div class="ggrbk">
+    <div class="btns">
+        <button  onclick={ggrks}>GGRKSとは</button >
+        <button  onclick={ggrbk}>GGRBKとは</button >
+        <button >GGRBK Family</button >
+    </div>
+    {#if !search}
+        <p>Tips: ?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a href="?GGRKS" target="_blank">例</a></p>
+    {/if}
+</div>
+
+<style lang="postcss">
+    .header {
+        @apply
+        text-center
+    }
+    .logo {
+        @apply
+        text-6xl tracking-tight
+        bg-gradient-to-r from-blue-500 via-indigo-500 to-fuchsia-500
+        bg-clip-text text-transparent
+        pb-1 w-fit m-auto
+        mt-10
+        mb-10
+    }
+
+    .engine {
+        @apply
+        text-center
+    }
+
+    .ggrbk {
+        @apply
+        text-center
+        mt-10
+    }
+
+    p {
+        @apply
+        text-black dark:text-white
+    }
+    h2 {
+        @apply
+        text-black dark:text-white
+    }
+    button  {
+        @apply
+        bg-blue-500 active:bg-blue-600 text-white
+        font-bold
+        py-2 px-4
+        border-b-4 border-blue-700 active:border-blue-800
+        rounded
+    }
+</style>
