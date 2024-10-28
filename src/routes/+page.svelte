@@ -2,6 +2,7 @@
     import { page } from "$app/stores";
     import { movepg } from '$lib/utils';
     import Swal from "sweetalert2";
+    import { MetaTags } from "svelte-meta-tags";
 
     export const ggrks = () => {
         Swal.fire({
@@ -23,7 +24,7 @@
 
     export const genogp = () => {
         if (search == '') {
-            data = "自分で調べることはとても重要です。人に聞く前に一度検索してみやがれください。"
+            data = "人に聞くのは最終手段です。一通り調べてから聞くようにしましょう。"
         } else {
             data = search
         }
@@ -83,3 +84,13 @@
         text-blue-400
     }
 </style>
+
+<MetaTags
+    title="GGRKS"
+    openGraph={{
+        type: 'website',
+        url: $page.url.href,
+        title: 'GGRKS',
+        description: '🔍 ' + genogp(),
+    }}
+/>
