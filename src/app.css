@@ -1,16 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Modern+Antiqua&display=swap');
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
 body {
-    font-family: "Work Sans", "Kaisei Opti", serif;
+    font-family: "Modern Antiqua", "Kaisei Opti", serif;
     font-style: normal;
     background: white;
+}
+p {
+    color: black;
+}
+h2 {
+    color: black;
+    font-size: 2rem;
 }
 
 @media (prefers-color-scheme: dark) {
     body {
         background: black;
+    }
+    p {
+        color: white;
+    }
+    h2 {
+        color: white;
     }
 }

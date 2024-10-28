@@ -31,13 +31,9 @@
     }
 </script>
 
-<div class="header">
-    <h1 class="logo">GooglingGo! Japan</h1>
-</div>
-
 <div class="engine">
     {#if search}
-        <h2>🔍 {search}</h2>
+        <h2>🔍 {search}</h2> <!-- inputに置き換える -->
     {/if}
     <p>お好みの検索エンジンを選んでください</p>
     <div class="btns">
@@ -52,9 +48,9 @@
 
 <div class="ggrbk">
     <div class="btns">
-        <button  onclick={ggrks}>GGRKSとは</button >
-        <button  onclick={ggrbk}>GGRBKとは</button >
-        <button >GGRBK Family</button >
+        <button onclick={ggrks}>GGRKSとは</button >
+        <button onclick={ggrbk}>GGRBKとは</button >
+        <button onclick={() => movepg($page.url.origin + "/family")}>GGRBK Family</button>
     </div>
     {#if !search}
         <p>Tips: ?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a href="?GGRKS" target="_blank">例</a></p>
@@ -62,20 +58,6 @@
 </div>
 
 <style lang="postcss">
-    .header {
-        @apply
-        text-center
-    }
-    .logo {
-        @apply
-        text-6xl tracking-tight
-        bg-gradient-to-r from-blue-500 via-indigo-500 to-fuchsia-500
-        bg-clip-text text-transparent
-        pb-1 w-fit m-auto
-        mt-10
-        mb-10
-    }
-
     .engine {
         @apply
         text-center
@@ -87,14 +69,6 @@
         mt-10
     }
 
-    p {
-        @apply
-        text-black dark:text-white
-    }
-    h2 {
-        @apply
-        text-black dark:text-white
-    }
     button  {
         @apply
         bg-blue-500 active:bg-blue-600 text-white
@@ -102,5 +76,10 @@
         py-2 px-4
         border-b-4 border-blue-700 active:border-blue-800
         rounded
+    }
+
+    a {
+        @apply
+        text-blue-400
     }
 </style>
