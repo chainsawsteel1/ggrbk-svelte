@@ -92,5 +92,11 @@
         url: $page.url.href,
         title: 'GGRKS',
         description: '🔍 ' + genogp(),
+        images: [
+            {
+                url: "/favicon.png",
+                alt: "ファビコン",
+            }
+        ]
     }}
 />
