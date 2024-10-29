@@ -13,7 +13,7 @@
 <div class="header">
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-    <h1 class="logo" onclick={() => movepg($page.url.origin + "/")}>GooglingGo! Japan</h1>
+    <h1 class="logo" onclick={() => movepg($page.url.origin + "/")}><span class="gg">Goog</span><span class="bg">ling</span><span class="go">Go</span><span class="jp">! Japan</span></h1>
 </div>
 
 {@render children()}
@@ -26,7 +26,6 @@
     .logo {
         @apply
         text-6xl tracking-tight
-        bg-gradient-to-r from-blue-500 via-indigo-500 to-fuchsia-500
         bg-clip-text text-transparent
         pb-2 w-fit m-auto
         mt-10

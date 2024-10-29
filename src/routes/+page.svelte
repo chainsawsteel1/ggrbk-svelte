@@ -4,6 +4,8 @@
     import Swal from "sweetalert2";
     import { MetaTags } from "svelte-meta-tags";
     import { fade, blur } from "svelte/transition";
+    import { setupViewTransition } from "sveltekit-view-transition";
+    const { transition } = setupViewTransition();
 
     export const ggrks = () => {
         Swal.fire({
@@ -39,7 +41,7 @@
             <h2 transition:blur={{duration: 300}}>🔍 {search}</h2> <!-- inputに置き換える -->
         {/if}
     </div>
-    <input placeholder="search..." class={`rounded-full dark:bg-black dark:border-white dark:text-white`} type="search" bind:value={search}>
+    <input placeholder="search..." class={`rounded-full dark:bg-black dark:border-white dark:text-white w-80`} type="search" bind:value={search}>
     <br>
     <br>
     <p>お好みの検索エンジンを選んでください</p>
@@ -57,7 +59,8 @@
     <div class="btns">
         <button onclick={ggrks}>GGRKSとは</button >
         <button onclick={ggrbk}>GGRBKとは</button >
-        <button onclick={() => movepg($page.url.origin + "/family")}>GGRBK Family</button>
+        <button onclick={() => movepg($page.url.origin + "/family")} use:transition={"family"}>GGRBK Family</button>
+        <button onclick={() => movepg($page.url.origin + "/faq")} use:transition={"faq"}>GGRBK FAQ</button>
     </div>
     {#if !search}
         <p transition:blur={{duration: 300}}>Tips: ?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a href="?GGRKS" target="_blank">例</a></p>
@@ -97,7 +100,7 @@
 </style>
 
 <MetaTags
-    title="GGRKS"
+    title="GooglingGo! Japan"
     openGraph={{
         type: 'website',
         url: $page.url.href,

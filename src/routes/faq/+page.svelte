@@ -8,9 +8,10 @@
 </script>
 
 <div class="here">
-    <h2 use:transition={"family"}>GGRBK Family</h2>
+    <h2 use:transition={"faq"}>GGRBK FAQ List</h2>
     <p>ページ未実装</p>
-    <button onclick={() => movepg("https://ggrbk.github.io/family.html")}>ここにあります</button>
+    <button onclick={() => movepg("https://ggrbk.github.io/faq/list.html")}>ここにあります</button>
+    <p>頻繁に発生する質問にはこれらのリンクを貼り付けて撃退しましょう！</p>
 </div>
 
 <style lang="postcss">
@@ -31,12 +32,12 @@
 </style>
 
 <MetaTags
-    title="GGRBK Family"
+    title="GGRBK FAQ"
     openGraph={{
         type: 'website',
         url: $page.url.href,
-        title: 'GGRBK Family',
-        description: 'GGRBKファミリーのご紹介',
+        title: 'GGRBK FAQ',
+        description: 'どっかのサーバーで頻繁に来る質問一覧',
         images: [
             {
                 url: "/favicon.png",
