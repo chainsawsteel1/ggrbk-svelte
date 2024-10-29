@@ -3,6 +3,7 @@
     import { movepg } from '$lib/utils';
     import Swal from "sweetalert2";
     import { MetaTags } from "svelte-meta-tags";
+    import { fade, blur } from "svelte/transition";
 
     export const ggrks = () => {
         Swal.fire({
@@ -18,7 +19,7 @@
     }
 
     let sharp = $page.url.search
-    let search = sharp.substr(sharp.indexOf('?') + 1);
+    let search: string = sharp.substr(sharp.indexOf('?') + 1);
 
     let data
 
@@ -33,9 +34,14 @@
 </script>
 
 <div class="engine">
-    {#if search}
-        <h2>🔍 {search}</h2> <!-- inputに置き換える -->
-    {/if}
+    <div class="search">
+        {#if search}
+            <h2 transition:blur={{duration: 300}}>🔍 {search}</h2> <!-- inputに置き換える -->
+        {/if}
+    </div>
+    <input placeholder="search..." class={`rounded-full dark:bg-black dark:border-white dark:text-white`} type="search" bind:value={search}>
+    <br>
+    <br>
     <p>お好みの検索エンジンを選んでください</p>
     <div class="btns">
         <button onclick={() => movepg("https://www.google.com/search?q=" + search)}>Google</button>
@@ -54,11 +60,16 @@
         <button onclick={() => movepg($page.url.origin + "/family")}>GGRBK Family</button>
     </div>
     {#if !search}
-        <p>Tips: ?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a href="?GGRKS" target="_blank">例</a></p>
+        <p transition:blur={{duration: 300}}>Tips: ?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a href="?GGRKS" target="_blank">例</a></p>
     {/if}
 </div>
 
 <style lang="postcss">
+    .search {
+        @apply
+        h-14
+    }
+
     .engine {
         @apply
         text-center
