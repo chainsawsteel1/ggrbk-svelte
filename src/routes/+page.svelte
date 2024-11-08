@@ -52,6 +52,7 @@
         <button onclick={() => movepg("https://search.yahoo.com/search?q=" + search)}>Yahoo!</button>
         <button onclick={() => movepg("https://search.brave.com/search?q=" + search)}>Brave</button>
         <button onclick={() => movepg("https://www.ecosia.org/search?q=" + search)}>Ecosia</button>
+        <button onclick={() => movepg("https://karmasearch.org/search?q=" + search)}>KARMA</button>
     </div>
 </div>
 
