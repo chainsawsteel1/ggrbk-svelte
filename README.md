@@ -1,5 +1,5 @@
 # ggrbk-svelte
-次世代型検索エンジン。
+次世代型検索ツール。
 
 [ggrbk](https://github.com/ggrbk)プロジェクトの一員です 
 
