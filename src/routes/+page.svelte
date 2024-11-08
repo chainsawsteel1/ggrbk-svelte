@@ -15,13 +15,13 @@
         const shsts = localStorage.getItem("shsts");
         if (shsts == undefined) {
             enable = false;
-            localStorage.setItem('shsts', 'false');
+            localStorage.setItem("shsts", "false");
         } else if (shsts == "false") {
             enable = false;
         } else if (shsts == "true") {
             enable = true;
         } else {
-            localStorage.setItem('shsts', 'false');
+            localStorage.setItem("shsts", "false");
             enable = false;
         }
     }
@@ -57,10 +57,10 @@
     export const change = () => {
         if (enable == true) {
             enable = false;
-            localStorage.setItem('shsts', 'false');
+            localStorage.setItem("shsts", "false");
         } else {
             enable = true;
-            localStorage.setItem('shsts', 'true');
+            localStorage.setItem("shsts", "true");
         }
     };
 </script>
@@ -127,15 +127,17 @@
             use:transition={"faq"}>GGRBK FAQ</button
         >
     </div>
-    {#if !search}
-        <p class="tips" transition:blur={{ duration: 300 }}>
-            Tips:
-            ?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a
-                href="?GGRKS"
-                target="_blank">例</a
-            >
-        </p>
-    {/if}
+    <div class="tips">
+        {#if !search}
+            <p transition:blur={{ duration: 300 }}>
+                Tips:
+                ?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a
+                    href="?GGRKS"
+                    target="_blank">例</a
+                >
+            </p>
+        {/if}
+    </div>
 </div>
 
 <div class="direct">
