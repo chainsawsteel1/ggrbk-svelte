@@ -22,6 +22,7 @@
 	.header {
         @apply
         text-center
+        mt-96
     }
     .logo {
         @apply
