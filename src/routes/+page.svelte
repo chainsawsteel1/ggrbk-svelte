@@ -162,11 +162,7 @@
     <div class="tips">
         <p>Tips: </p>
         <p>/キーで検索ボックスにフォーカスを当てます</p>
-        {#if !search}
-            <p transition:blur={{ duration: 300 }}>
-                ?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a href="?GGRKS" target="_blank">例</a>
-            </p>
-        {/if}
+        <p>?以降にワードを指定することで、各検索エンジンへのリンクから直接検索できるようになります。<a href="?GGRKS" target="_blank">例</a></p>
     </div>
 </div>
 
