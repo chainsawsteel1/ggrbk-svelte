@@ -10,6 +10,7 @@
     import { browser } from "$app/environment";
 
     let enable: boolean;
+    let eng: string;
 
     if (browser) {
         const shsts = localStorage.getItem("shsts");
@@ -23,6 +24,13 @@
         } else {
             localStorage.setItem("shsts", "false");
             enable = false;
+        }
+        const ser = localStorage.getItem("ser");
+        if (shsts == undefined) {
+            eng = "g";
+            localStorage.setItem("ser", "g");
+        } else {
+            eng = ser ?? "g";
         }
     }
 
@@ -63,19 +71,60 @@
             localStorage.setItem("shsts", "true");
         }
     };
+
+    export const chsv = (item: string) => {
+        localStorage.setItem("ser", item);
+    };
+
+    export const go = (event: KeyboardEvent) => {
+        if (event.ctrlKey && event.key === "Enter") {
+            if (browser) {
+                window.open(gosearch(eng, search), "_self");
+            }
+        }
+    };
+
+    export const gosearch = (engin: string, str: string) => {
+        let url: string = "";
+        switch (engin) {
+            case "g":
+                url = "https://www.google.com/search?q=";
+                break;
+            case "b":
+                url = "https://www.bing.com/search?q=";
+                break;
+            case "d":
+                url = "https://duckduckgo.com/?q=";
+                break;
+            case "y":
+                url = "https://search.yahoo.com/search?q=";
+                break;
+            case "br":
+                url = "https://search.brave.com/search?q=";
+                break;
+            case "e":
+                url = "https://www.ecosia.org/search?q=";
+                break;
+            case "k":
+                url = "https://karmasearch.org/search?q=";
+                break;
+        }
+        console.log(url + str);
+        return url + str
+    };
 </script>
 
 <div class="engine">
     <div class="search">
         {#if search}
             <h2 transition:blur={{ duration: 300 }}>🔍 {search}</h2>
-            <!-- inputに置き換える -->
         {/if}
     </div>
     <input
         placeholder="search..."
         class={`rounded-full dark:bg-black dark:border-white dark:text-white w-80`}
         type="search"
+        onkeydown={go}
         bind:value={search}
     />
     <br />
@@ -143,6 +192,22 @@
 <div class="direct">
     <p>Ctrl+Returnで検索(未実装)</p>
     <button onclick={change}>{enable}</button>
+    {#if enable}
+        <select
+            bind:value={eng}
+            onchange={() => chsv(eng)}
+            transition:blur={{ duration: 300 }}
+        >
+            <option value="g">Google</option>
+            <option value="b">Bing</option>
+            <option value="d">DuckDuckGo</option>
+            <option value="y">Yahoo!</option>
+            <option value="br">Brave</option>
+            <option value="e">Ecosia</option>
+            <option value="k">KARMA</option>
+        </select>
+        <p>{eng}</p>
+    {/if}
 </div>
 
 <MetaTags
@@ -181,6 +246,14 @@
     }
 
     button {
+        @apply bg-blue-500 active:bg-blue-600 text-white
+        font-bold
+        py-2 px-4
+        border-b-4 border-blue-700 active:border-blue-800
+        rounded;
+    }
+
+    select {
         @apply bg-blue-500 active:bg-blue-600 text-white
         font-bold
         py-2 px-4
