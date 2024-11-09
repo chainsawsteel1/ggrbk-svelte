@@ -190,7 +190,7 @@
 </div>
 
 <div class="direct">
-    <p>Ctrl+Returnで検索(未実装)</p>
+    <p>Ctrl+Returnで検索</p>
     <button onclick={change}>{enable}</button>
     {#if enable}
         <select
@@ -206,7 +206,6 @@
             <option value="e">Ecosia</option>
             <option value="k">KARMA</option>
         </select>
-        <p>{eng}</p>
     {/if}
 </div>
 
